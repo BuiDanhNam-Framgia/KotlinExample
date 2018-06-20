@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_listview.view.*
-import java.security.cert.Extension
 import java.util.*
 
 class MainActivity : AppCompatActivity(), onViewSelect {
