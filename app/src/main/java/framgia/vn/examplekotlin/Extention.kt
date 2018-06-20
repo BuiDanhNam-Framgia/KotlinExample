@@ -8,13 +8,13 @@ import android.support.annotation.LayoutRes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import com.squareup.picasso.Picasso
 
 fun ViewGroup.inflate(@LayoutRes res: Int, attachToRoot: Boolean = false): View {
     return LayoutInflater.from(context).inflate(res, this, attachToRoot)
 }
 
-private fun View.snack() {
-
+fun ImageView.loadImage(res: String = R.mipmap.ic_launcher.toString()){
+     Picasso.with(context).load(res).into(this)
 }
-
-inline fun <reified T : View> Activity.find(@IdRes id: Int): T = findViewById(id) as T
