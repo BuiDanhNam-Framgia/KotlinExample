@@ -7,6 +7,7 @@ import rx.Observable
 class ReddRemoteDataSource : ReddDataSource {
     override fun getAll(): Observable<List<RedditNewsItem>> = Observable.create({ subscriber ->
         //call API
+
         subscriber.onNext(fakeData())
         subscriber.onCompleted()
     })
