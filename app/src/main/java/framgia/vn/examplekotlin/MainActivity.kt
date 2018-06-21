@@ -56,11 +56,11 @@ class MainActivity : AppCompatActivity(), onViewSelect {
         }
 
         inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-            var tv = itemView.tv
+//            var tv = itemView.tv
 
             fun bind(data: String) {
                 itemView.apply {
-                    tv.text = data
+//                    tv.text = data
                     setOnClickListener { listener.onItemClick(data) }
                 }
 
