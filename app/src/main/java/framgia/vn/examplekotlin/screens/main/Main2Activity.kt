@@ -57,10 +57,12 @@ class Main2Activity : AppCompatActivity(), Listtener2 {
             }
         })
 
+        adapter = RedditNewAdapter()
         lv.apply {
             layoutManager = LinearLayoutManager(context)
         }
         lv.adapter = adapter
+
         initData()
 
     }

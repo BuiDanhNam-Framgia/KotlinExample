@@ -18,12 +18,16 @@ class RedditNewAdapter() : RecyclerView.Adapter<RedditNewAdapter.ViewHolder>() {
         this.listener = ls
     }
 
+    public fun setListener(ls:Listtener2){
+        listener = ls
+    }
     init {
         this.items = ArrayList()
     }
 
     constructor(item: ArrayList<RedditNewsItem>, listener: Listtener2) : this() {
         this.items = item
+        this.listener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
