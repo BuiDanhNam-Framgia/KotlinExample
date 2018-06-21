@@ -12,6 +12,10 @@ import framgia.vn.examplekotlin.source.model.RedditNewsItem
 import kotlinx.android.synthetic.main.activity_main2.*
 
 class Main2Activity : AppCompatActivity(), Listtener2 {
+    override fun onItemSelect2(item: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun onItemSelect(item: RedditNewsItem) {
 
     }
@@ -25,7 +29,34 @@ class Main2Activity : AppCompatActivity(), Listtener2 {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-        adapter = RedditNewAdapter(this)
+        lv.setOnClickListener{v -> {
+             // lambdas
+        } }
+
+//        or
+        lv.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+
+            }
+        })
+        adapter = RedditNewAdapter()
+//        adapter.setClickListener (object : Listtener2{
+//            override fun onItemSelect(item: RedditNewsItem) {
+//
+//            }
+//
+//        })
+        //lambas
+        adapter.setClickListener(object :Listtener2{
+            override fun onItemSelect(item: RedditNewsItem) {
+
+            }
+
+            override fun onItemSelect2(item: Int) {
+
+            }
+        })
+
         lv.apply {
             layoutManager = LinearLayoutManager(context)
         }
@@ -35,7 +66,9 @@ class Main2Activity : AppCompatActivity(), Listtener2 {
     }
 
     private fun initData() {
-        var listRedd: List<RedditNewsItem>
+        var listRedd: List<RedditNewsItem>? = null
+//        lambdas
+//        listRedd?.forEach { x -> }
         presenter.getNews()
     }
 
@@ -49,3 +82,4 @@ class Main2Activity : AppCompatActivity(), Listtener2 {
         Toast.makeText(this,error,Toast.LENGTH_LONG).show()
     }
 }
+fun containsEven(collection: Collection<Int>): Boolean = collection.any { s -> s % 2 ==0  }

@@ -9,15 +9,20 @@ import framgia.vn.examplekotlin.loadImage
 import framgia.vn.examplekotlin.source.model.RedditNewsItem
 import kotlinx.android.synthetic.main.item_listview.view.*
 
-class RedditNewAdapter(private val listener: Listtener2) : RecyclerView.Adapter<RedditNewAdapter.ViewHolder>() {
+class RedditNewAdapter() : RecyclerView.Adapter<RedditNewAdapter.ViewHolder>() {
     //    ? marks a type as nullable
     private var items: ArrayList<RedditNewsItem>
+    private var listener: Listtener2? = null
+
+    public fun setClickListener(ls: Listtener2){
+        this.listener = ls
+    }
 
     init {
         this.items = ArrayList()
     }
 
-    constructor(item: ArrayList<RedditNewsItem>, listener: Listtener2) : this(listener) {
+    constructor(item: ArrayList<RedditNewsItem>, listener: Listtener2) : this() {
         this.items = item
     }
 
@@ -52,7 +57,7 @@ class RedditNewAdapter(private val listener: Listtener2) : RecyclerView.Adapter<
             itemView.comments.text = data.numComments.toString()
             itemView.time.text = data.created.toString()
             itemView.img_thumbnail.loadImage(data.thumbnail)
-            itemView.setOnClickListener {listener.onItemSelect(data)}
+            itemView.setOnClickListener { listener?.onItemSelect(data) }
         }
     }
 
@@ -77,9 +82,9 @@ fun handleClickItem(item: RedditNewsItem) {
 fun handleClickDes(value: String) {
 
 }
-
 interface Listtener2 {
     fun onItemSelect(item: RedditNewsItem)
+    fun onItemSelect2(item: Int)
 }
 
 sealed class Listener
