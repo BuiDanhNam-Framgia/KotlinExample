@@ -6,12 +6,12 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Toast
 import framgia.vn.examplekotlin.R
-import framgia.vn.examplekotlin.adapter.Listtener
+import framgia.vn.examplekotlin.adapter.Listtener2
 import framgia.vn.examplekotlin.adapter.RedditNewAdapter
 import framgia.vn.examplekotlin.source.model.RedditNewsItem
 import kotlinx.android.synthetic.main.activity_main2.*
 
-class Main2Activity : AppCompatActivity(), Listtener {
+class Main2Activity : AppCompatActivity(), Listtener2 {
     override fun onItemSelect(item: RedditNewsItem) {
 
     }
