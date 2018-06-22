@@ -51,44 +51,31 @@ class RedditNewAdapter() : RecyclerView.Adapter<RedditNewAdapter.ViewHolder>() {
         items.addAll(redditNewsItem)
         notifyItemRangeChanged(index, items.size)
     }
+    public fun refreshNews(redditNewsItem: List<RedditNewsItem>){
+        items.clear()
+        items.addAll(redditNewsItem)
+        notifyDataSetChanged()
+    }
 
 
     inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        fun binder(data: RedditNewsItem) {
+        fun binder(data: RedditNewsItem?) {
             // data?.outhor as if(data != null ) {data.author}
-            itemView.author.text = data.author
-            itemView.description.text = data.title
-            itemView.comments.text = data.numComments.toString()
-            itemView.time.text = data.created.toString()
-            itemView.img_thumbnail.loadImage(data.thumbnail)
+            itemView.author.text = data?.author
+            itemView.description.text = data?.title
+            itemView.comments.text = data?.numComments.toString()
+            itemView.time.text = data?.created.toString()
+            itemView.img_thumbnail.loadImage(data?.thumbnail)
             itemView.setOnClickListener { listener?.onItemSelect(data) }
         }
     }
 
 }
 
-fun handleClick(listener: Listener){
-    when(listener){
-        is OnCLickDescription -> handleClickDes(listener.value)
-        is OnClickItem -> handleClickItem(listener.item)
-        is OnClickImage -> handleClickImage(listener.item)
-    }
-}
 
-fun handleClickImage(item: RedditNewsItem) {
-
-}
-
-fun handleClickItem(item: RedditNewsItem) {
-
-}
-
-fun handleClickDes(value: String) {
-
-}
 interface Listtener2 {
-    fun onItemSelect(item: RedditNewsItem)
-    fun onItemSelect2(item: Int)
+    fun onItemSelect(item: RedditNewsItem?)
+    fun onImgageSelect(item: String)
 }
 
 sealed class Listener
