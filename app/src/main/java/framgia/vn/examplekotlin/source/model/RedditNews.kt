@@ -2,12 +2,14 @@ package framgia.vn.examplekotlin.source.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import framgia.vn.examplekotlin.adapter.ViewType
 import framgia.vn.examplekotlin.util.TYPE
 
 data class RedditNewsItem(
         val author: String,
         val title: String,
+        @SerializedName("num_comments")
         val numComments: Int,
         val created: Long,
         val thumbnail: String,

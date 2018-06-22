@@ -1,12 +1,13 @@
 package framgia.vn.examplekotlin.source.local
 
 import framgia.vn.examplekotlin.source.ReddDataSource
+import framgia.vn.examplekotlin.source.model.RedditDataResponse
 import framgia.vn.examplekotlin.source.model.RedditNewsItem
 import rx.Observable
 
 class ReddLocalDataSource:ReddDataSource{
 
-    override fun getAll(): Observable<List<RedditNewsItem>> {
+    override fun getAll(affter:String? , offer:String): Observable<RedditDataResponse> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

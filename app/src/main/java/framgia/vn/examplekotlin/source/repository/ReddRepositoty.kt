@@ -2,6 +2,7 @@ package framgia.vn.examplekotlin.source.repository
 
 import framgia.vn.examplekotlin.source.ReddDataSource
 import framgia.vn.examplekotlin.source.local.ReddLocalDataSource
+import framgia.vn.examplekotlin.source.model.RedditDataResponse
 import framgia.vn.examplekotlin.source.model.RedditNewsItem
 import framgia.vn.examplekotlin.source.remote.ReddRemoteDataSource
 import rx.Observable
@@ -17,7 +18,7 @@ class ReddRepositoty private constructor(private var local: ReddDataSource,priva
         }
     }
 
-    override fun getAll(): Observable<List<RedditNewsItem>> = remote.getAll()
+    override fun getAll(affter:String? , offer:String): Observable<RedditDataResponse> = remote.getAll(affter,offer)
 
     override fun getReddById(id: String): Observable<List<RedditNewsItem>> = remote.getReddById(id)
 

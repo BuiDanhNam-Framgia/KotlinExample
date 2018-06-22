@@ -14,8 +14,8 @@ class MainPresenter(private var view: Main2Activity) {
         respository = ReddRepositoty.getInstance(local, remote)
     }
 
-    fun getNews() {
-        respository.getAll()
+    fun getNews(affterPager: String?, offer: String) {
+        respository.getAll(affterPager,offer)
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                         {

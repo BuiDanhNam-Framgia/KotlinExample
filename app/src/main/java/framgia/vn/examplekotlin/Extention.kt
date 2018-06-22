@@ -15,6 +15,6 @@ fun ViewGroup.inflate(@LayoutRes res: Int, attachToRoot: Boolean = false): View 
     return LayoutInflater.from(context).inflate(res, this, attachToRoot)
 }
 
-fun ImageView.loadImage(res: String = R.mipmap.ic_launcher.toString()){
+fun ImageView.loadImage(res: String? = R.mipmap.ic_launcher.toString()){
      Picasso.with(context).load(res).into(this)
 }
