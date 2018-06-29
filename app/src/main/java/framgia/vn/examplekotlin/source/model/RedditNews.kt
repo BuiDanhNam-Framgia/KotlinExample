@@ -1,18 +1,25 @@
 package framgia.vn.examplekotlin.source.model
 
+import android.arch.persistence.room.ColumnInfo
+import android.arch.persistence.room.Entity
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import framgia.vn.examplekotlin.adapter.ViewType
 import framgia.vn.examplekotlin.util.TYPE
-
+@Entity(primaryKeys = ["firstName","numComment" ] ,tableName = "reddit" )
 data class RedditNewsItem(
+        @ColumnInfo(name = "author")
         val author: String,
+        @ColumnInfo(name = "title")
         val title: String,
-        @SerializedName("num_comments")
+        @ColumnInfo(name = "numComment")
         val numComments: Int,
+        @ColumnInfo(name = "created")
         val created: Long,
+        @ColumnInfo(name = "thumbnail")
         val thumbnail: String,
+        @ColumnInfo(name = "url")
         val url: String?
 ) : ViewType, Parcelable {
     constructor(parcel: Parcel) : this(

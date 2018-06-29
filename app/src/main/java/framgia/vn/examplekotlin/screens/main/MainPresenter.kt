@@ -1,18 +1,10 @@
 package framgia.vn.examplekotlin.screens.main
 
-import framgia.vn.examplekotlin.source.local.ReddLocalDataSource
-import framgia.vn.examplekotlin.source.remote.ReddRemoteDataSource
 import framgia.vn.examplekotlin.source.repository.ReddRepositoty
 import rx.schedulers.Schedulers
 
-class MainPresenter(private var view: Main2Activity) {
-    private var respository: ReddRepositoty
+class MainPresenter(private var view: Main2Activity, private var respository: ReddRepositoty) {
 
-    init {
-        var local = ReddLocalDataSource()
-        var remote = ReddRemoteDataSource()
-        respository = ReddRepositoty.getInstance(local, remote)
-    }
 
     fun getNews(affterPager: String?, offer: String) {
         respository.getAll(affterPager,offer)
