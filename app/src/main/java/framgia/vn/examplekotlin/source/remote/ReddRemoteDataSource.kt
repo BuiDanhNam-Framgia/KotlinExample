@@ -12,17 +12,17 @@ import retrofit2.Response
 import rx.Observable
 
 class ReddRemoteDataSource : ReddDataSource {
-    override fun getAll(affter:String? , offer:String): Observable<RedditDataResponse> = Observable.create(
+    override fun getAll(affter: String?, offer: String): Observable<RedditDataResponse> = Observable.create(
             { subscriber ->
                 //call API
-                RetrofitClient.getRetrofitAPI(url)?.getTop(affter ,offer)?.enqueue(object : Callback<RedditNewsResponse> {
+                RetrofitClient.getRetrofitAPI(url)?.getTop(affter, offer)?.enqueue(object : Callback<RedditNewsResponse> {
                     override fun onFailure(call: Call<RedditNewsResponse>?, t: Throwable?) {
                         subscriber.onError(t)
                     }
 
                     override fun onResponse(call: Call<RedditNewsResponse>?, response: Response<RedditNewsResponse>?) {
                         if (response?.isSuccessful!!) {
-                            var list= response.body()?.data
+                            var list = response.body()?.data
 //
                             subscriber.onNext(list)
                             subscriber.onCompleted()
